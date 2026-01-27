@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Zap, Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { Zap, Linkedin, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -19,24 +19,6 @@ const Footer = () => {
               hackathons, and a vibrant community of passionate developers.
             </p>
             <div className="flex items-center gap-4 mt-6">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
               <a
                 href="https://linkedin.com"
                 target="_blank"
