@@ -44,6 +44,24 @@ const events: Event[] = [
     speaker: "Dr. Rajesh Bingu Ph.D.",
   },
   {
+    id: 2,
+    title: "Chaos or Release",
+    description:
+      "A fun decision-making game based on real-world scenarios. No coding experience needed.",
+    moreInfo:
+      "The XOps Club presents Chaos or Release, held on March 25, 2026, in Seminar Hall 002.\n\nForm a team of 3 members and tackle real-world scenario based questions within an allotted time. Earn the most points by making smart choices to avoid system failures.",
+    date: "March 25, 2026 (Wednesday)",
+    time: "Time will be announced",
+    location: "Seminar Hall 002",
+    type: "meetup",
+    attendees: 0,
+    maxAttendees: 120,
+    image: "🎯",
+    joinLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLScSSH4TaQ_ojWLoLimaA2CEIoYF9Eu-wonyWt77BEhB3YSkaw/viewform",
+    featured: true,
+  },
+  {
     id: 3,
     title: "Cloud Computing Bootcamp",
     description: "3-day intensive bootcamp covering AWS, Azure, and Google Cloud fundamentals.",
@@ -193,9 +211,25 @@ const Events = () => {
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        <Button variant={event.id === 1 ? "default" : "hero"} className={event.id === 1 ? "flex-1 bg-gray-400 cursor-not-allowed text-white font-bold" : "flex-1"} disabled={event.id === 1}>
-                          Registration Closed
-                        </Button>
+                        {event.id === 1 ? (
+                          <Button
+                            variant="default"
+                            className="flex-1 bg-gray-400 cursor-not-allowed text-white font-bold"
+                            disabled
+                          >
+                            Registration Closed
+                          </Button>
+                        ) : event.joinLink ? (
+                          <Button asChild variant="hero" className="flex-1">
+                            <a href={event.joinLink} target="_blank" rel="noopener noreferrer">
+                              Register
+                            </a>
+                          </Button>
+                        ) : (
+                          <Button variant="hero" className="flex-1" disabled>
+                            Registration Soon
+                          </Button>
+                        )}
                         {event.moreInfo && (
                           <Dialog>
                             <DialogTrigger asChild>
@@ -287,9 +321,17 @@ const Events = () => {
                     </div>
 
                     <div className="flex gap-2">
-                      <Button variant="hero-outline" className="flex-1">
-                        Register
-                      </Button>
+                      {event.joinLink ? (
+                        <Button asChild variant="hero-outline" className="flex-1">
+                          <a href={event.joinLink} target="_blank" rel="noopener noreferrer">
+                            Register
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button variant="hero-outline" className="flex-1" disabled>
+                          Registration Soon
+                        </Button>
+                      )}
                       {event.moreInfo && (
                         <Dialog>
                           <DialogTrigger asChild>

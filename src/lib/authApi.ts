@@ -36,6 +36,10 @@ export class AuthApiError extends Error {
   }
 }
 
+const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
+
+const withApiBaseUrl = (path: string) => `${apiBaseUrl}${path}`;
+
 const parseResponse = async (response: Response) => {
   try {
     return await response.json();
@@ -62,11 +66,20 @@ const requestJson = async <T>(
     headers.Authorization = `Bearer ${options.token}`;
   }
 
-  const response = await fetch(url, {
-    method: options.method,
-    headers,
-    body: options.payload !== undefined ? JSON.stringify(options.payload) : undefined,
-  });
+  let response: Response;
+
+  try {
+    response = await fetch(url, {
+      method: options.method,
+      headers,
+      body: options.payload !== undefined ? JSON.stringify(options.payload) : undefined,
+    });
+  } catch {
+    throw new AuthApiError(
+      "Cannot reach the auth server. Start the API and try again.",
+      0
+    );
+  }
 
   const data = await parseResponse(response);
 
@@ -83,13 +96,13 @@ const requestJson = async <T>(
 };
 
 export const signupUser = (payload: SignupPayload) =>
-  requestJson<AuthResponse>("/api/auth/signup", { method: "POST", payload });
+  requestJson<AuthResponse>(withApiBaseUrl("/api/auth/signup"), { method: "POST", payload });
 
 export const loginUser = (payload: LoginPayload) =>
-  requestJson<AuthResponse>("/api/auth/login", { method: "POST", payload });
+  requestJson<AuthResponse>(withApiBaseUrl("/api/auth/login"), { method: "POST", payload });
 
 export const fetchCurrentUser = (token: string) =>
-  requestJson<SessionResponse>("/api/auth/me", { method: "GET", token });
+  requestJson<SessionResponse>(withApiBaseUrl("/api/auth/me"), { method: "GET", token });
 
 export const isAuthApiError = (error: unknown): error is AuthApiError =>
   error instanceof AuthApiError;
