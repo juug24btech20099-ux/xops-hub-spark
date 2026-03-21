@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Zap, Linkedin, Mail, Instagram } from "lucide-react";
+import { Linkedin, Mail, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -19,7 +19,7 @@ const Footer = () => {
               hackathons, and a vibrant community of passionate developers.
             </p>
             <div className="flex items-center gap-4 mt-6">
-              <a
+              
                 href="https://www.linkedin.com/in/xops-club-ju-fet/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -28,7 +28,7 @@ const Footer = () => {
               >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a
+              
                 href="https://www.instagram.com/xops.club_ju/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -37,7 +37,7 @@ const Footer = () => {
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a
+              
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=xopsclub.cse.ju@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -47,14 +47,13 @@ const Footer = () => {
                 <Mail className="h-5 w-5" />
               </a>
             </div>
-            
+
             {/* Jain Logo */}
-            <div className="-mt-2 flex items-center">
-              <img 
-                src="/jain logo.jpg" 
-                alt="Jain Symbol" 
-                className="h-40 w-56 object-contain"
-                style={{ mixBlendMode: 'darken', filter: 'brightness(0.95) contrast(1.8) saturate(1.5) hue-rotate(0deg)' }}
+            <div className="mt-4">
+              <img
+                src="/jain logo main.png"
+                alt="Jain FET Logo"
+                className="h-16 w-auto object-contain brightness-0 invert opacity-70"
               />
             </div>
           </div>
