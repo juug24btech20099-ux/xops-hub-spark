@@ -53,7 +53,7 @@ const Footer = () => {
               <img
                 src="/jain logo main.png"
                 alt="Jain FET Logo"
-                className="h-16 w-auto object-contain brightness-0 invert opacity-70"
+                className="h-24 w-auto object-contain brightness-0 invert opacity-90"
               />
             </div>
           </div>
