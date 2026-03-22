@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const frontendOrigin = process.env.FRONTEND_ORIGIN;
 const allowLocalhost = process.env.NODE_ENV !== "production";
-const adminEmail = (process.env.ADMIN_EMAIL || "").toLowerCase();
+const adminEmail = (process.env.ADMIN_EMAIL || "").toLowerCase().trim();
 
 const usersFilePath = process.env.VERCEL
   ? path.join("/tmp", "xops-users.json")
